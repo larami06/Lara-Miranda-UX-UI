@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lara Miranda — UX/UI Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --indigo:#2b2a9c; --indigo-deep:#1b1a66; --ink:#0d0e2b; --paper:#ffffff;
+  --grid:#cfe2f6; --soft:#eef4fb; --muted:#5b6285;
+  --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+  --mono:'JetBrains Mono','SFMono-Regular',Menlo,Consolas,monospace;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img,svg{max-width:100%}
+
+/* NAV */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px clamp(16px,4vw,48px);background:rgba(255,255,255,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--grid);font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.nav .brand{font-weight:700;color:var(--indigo);text-decoration:none}
+.nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:0;overflow-x:auto}
+.nav li a{display:block;padding:6px 10px;border-radius:999px;text-decoration:none;color:var(--muted);white-space:nowrap;border:1px solid transparent}
+.nav li a:hover,.nav li a.on{color:var(--indigo);border-color:var(--indigo)}
+
+/* HERO */
+.hero{position:relative;min-height:calc(100vh - 56px);overflow:hidden;
+  background-color:#fff;
+  background-image:
+    linear-gradient(var(--grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px;
+  display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:clamp(8px,3vw,48px);padding:clamp(16px,4vw,56px)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,transparent 55%,rgba(255,255,255,.7) 100%)}
+.hero > *{position:relative;z-index:1}
+.laptop{width:100%;max-width:640px;margin:0 auto;display:block}
+.stage{display:flex;justify-content:center}
+.blob{position:relative;width:min(100%,560px);aspect-ratio:1/1.08;background:var(--indigo);
+  border-radius:58% 42% 55% 45% / 48% 56% 44% 52%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:12%;
+  box-shadow:10px 12px 0 var(--indigo-deep);animation:morph 14s ease-in-out infinite}
+@keyframes morph{
+  0%,100%{border-radius:58% 42% 55% 45% / 48% 56% 44% 52%}
+  50%{border-radius:46% 54% 44% 56% / 56% 44% 56% 44%}}
+.blob .kicker{font-family:var(--sans);font-weight:500;letter-spacing:.55em;font-size:clamp(14px,2vw,20px);margin-right:-.55em}
+.blob h1{font-family:var(--serif);font-weight:900;font-size:clamp(46px,8.2vw,96px);line-height:1;margin:.12em 0 0;letter-spacing:-.01em}
+.blob .name{font-family:var(--mono);font-weight:500;font-size:clamp(14px,1.9vw,20px);letter-spacing:.18em;text-transform:uppercase;margin-top:clamp(22px,5vw,56px);padding-top:14px;border-top:1px dashed rgba(255,255,255,.55)}
+.blob .cta{margin-top:20px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);background:#fff;padding:10px 16px;border-radius:999px;text-decoration:none;transition:transform .2s}
+.blob .cta:hover{transform:translate(-2px,-2px)}
+.fig-cap{position:absolute;left:clamp(16px,4vw,56px);bottom:18px;font-family:var(--mono);font-size:11px;color:var(--indigo);letter-spacing:.08em;z-index:2}
+.scroll-hint{position:absolute;right:clamp(16px,4vw,56px);bottom:18px;font-family:var(--mono);font-size:11px;color:var(--indigo);z-index:2}
+
+/* PROJECT INDEX */
+.index{padding:clamp(40px,7vw,96px) clamp(16px,4vw,56px);background:#fff}
+.tag{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--indigo);border:1px solid currentColor;border-radius:999px;padding:4px 12px;margin-bottom:18px}
+.dark .tag{color:#b9b8ff}
+.index h2{font-family:var(--serif);font-size:clamp(30px,5vw,56px);margin:0 0 32px;line-height:1.1}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.card{display:flex;flex-direction:column;gap:10px;padding:22px;border:1px solid var(--grid);border-radius:22px;background:#fff;text-decoration:none;box-shadow:0 1px 0 var(--grid),6px 6px 0 var(--soft);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translate(-3px,-3px);box-shadow:0 1px 0 var(--grid),9px 9px 0 var(--indigo)}
+.card .n{font-family:var(--mono);font-size:12px;color:var(--indigo)}
+.card h3{margin:0;font-size:20px;font-family:var(--serif)}
+.card p{margin:0;color:var(--muted);font-size:14px}
+.card .sw{display:flex;gap:6px;margin-top:auto;padding-top:8px}
+.card .sw i{width:22px;height:22px;border-radius:50%;border:1px solid rgba(0,0,0,.12)}
+
+/* CASE STUDY */
+.sec{padding:clamp(44px,7vw,96px) clamp(16px,4vw,56px)}
+.sec .wrap{max-width:1080px;margin:0 auto}
+.light{background:#fff;color:var(--ink)}
+.light.grid{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px}
+.dark{background:var(--ink);color:#eceeff}
+.dark.indigo{background:var(--indigo-deep)}
+.cs-head h1{font-family:var(--serif);font-weight:900;font-size:clamp(38px,7vw,84px);line-height:1.02;margin:6px 0 14px}
+.cs-head .sub{font-size:clamp(16px,2vw,22px);color:#c9cbff;max-width:720px;margin:0}
+.crumb{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#9fa2ff;text-decoration:none}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:40px}
+.meta div{border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:16px 18px;background:rgba(255,255,255,.04)}
+.meta b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9fa2ff;margin-bottom:6px;font-weight:500}
+.meta span{font-size:14px}
+h2.t{font-family:var(--serif);font-size:clamp(26px,4vw,44px);line-height:1.15;margin:0 0 20px}
+.two{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(20px,4vw,56px);align-items:start}
+.lede{font-size:clamp(16px,1.8vw,19px);max-width:62ch}
+.float{border:1px solid var(--grid);border-radius:22px;padding:20px 22px;background:#fff;box-shadow:8px 8px 0 var(--indigo);transform:rotate(-1.2deg)}
+.float .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo);margin-bottom:8px}
+.float p{margin:0;font-size:15px}
+.dark .float{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.2);box-shadow:8px 8px 0 var(--indigo);color:#eceeff}
+.dark .float .lbl{color:#b9b8ff}
+.sol{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:8px}
+.sol article{border:1px solid rgba(255,255,255,.2);border-radius:22px;padding:22px;background:rgba(255,255,255,.05)}
+.sol article .k{font-family:var(--mono);font-size:12px;color:#b9b8ff;margin-bottom:10px}
+.sol article p{margin:0;font-size:15px}
+.pal{display:flex;flex-wrap:wrap;gap:14px;margin:8px 0 22px}
+.pal figure{margin:0;width:120px}
+.pal .chip{height:84px;border-radius:18px;border:1px solid rgba(0,0,0,.12);box-shadow:4px 4px 0 var(--soft)}
+.pal figcaption{font-family:var(--mono);font-size:11px;margin-top:8px;color:var(--muted)}
+.proto-section .wrap{max-width:1440px}
+.proto-wrap{margin-top:12px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.frame{width:min(100%,var(--w,420px));aspect-ratio:var(--ratio,7 / 13);height:auto;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.25);background:#000;box-shadow:10px 10px 0 var(--indigo)}
+.frame iframe{width:100%;height:100%;border:0;display:block}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:12px 18px;border-radius:999px;background:#fff;color:var(--indigo-deep);text-decoration:none;font-weight:700}
+.btn:hover{background:#dcdcff}
+.pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px}
+.pager a{font-family:var(--serif);font-size:clamp(20px,3vw,32px);text-decoration:none;color:var(--indigo)}
+.pager small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+footer{padding:28px clamp(16px,4vw,56px);font-family:var(--mono);font-size:12px;color:var(--muted);border-top:1px solid var(--grid);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;min-height:auto;padding-bottom:64px}
+  .two{grid-template-columns:1fr}
+  .laptop{max-width:420px}
+}
+@media (prefers-reduced-motion:reduce){.blob{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="#/">LM / UX-UI</a>
+  <ul id="navlinks"></ul>
+</nav>
+<main id="app"></main>
+<footer><span>© Lara Miranda — UX/UI Portfolio</span><span>fig. sketchbook v1.0</span></footer>
+
+<script>
+/* ---------- DATA ---------- */
+const PROJECTS = [
+ {id:'members-book',n:'01',title:'Members Book',client:'Disruption',
+  sub:'Networking app for leaders & entrepreneurs',
+  type:'mobile',
+  link:'https://www.figma.com/proto/AKsUSfHKe4HzewzTpxWzWm/Enjoy-React-Native?node-id=10-81&starting-point-node-id=10%3A81',
+  overview:'Exclusive mobile networking experience for high-impact executives and founders in the Disruption community.',
+  problem:'Develop an elegant, understated, luxury tech dark-mode mobile interface that conveys instant credibility while streamlining authentication and onboarding.',
+  note:'For an audience of executives, restraint signals status. Fewer elements, more air, and one clear path in.',
+  solution:[['Dark + metallic','Sophisticated dark palette with metallic / gold accents for a quiet, premium feel.'],
+            ['Three-door onboarding','Entry structured between “Log In”, “Sign Up” and “I have an invite”.'],
+            ['Institutional voice','Mobile-first, centered messaging that reinforces the community’s credibility.']],
+  role:['Mobile UI Design & Art Direction','Information Architecture','High-Fidelity Prototyping'],
+  palette:[['#0b0b0c','base'],['#1b1b1f','surface'],['#c9a24b','gold accent'],['#ece6d3','text']],
+  typo:'Understated, high-contrast type on dark; metallic accents reserved for the primary actions.'},
+ {id:'boy-iphones',n:'02',title:'Boy iPhones',client:'Apple-specialized retail',
+  sub:'Mobile sales management system',
+  type:'mobile',
+  link:'https://www.figma.com/proto/rnVFWCByp65dynpcVKQD57/BoyiPhones?node-id=1-2&starting-point-node-id=1%3A2',
+  overview:'Mobile app designed to optimize sales routines and operational management for an Apple-specialized retail store.',
+  problem:'Design a clean, fast and secure authentication flow inside a high-productivity mobile dashboard, eliminating daily login friction.',
+  note:'A tool opened dozens of times a day should never feel like a gate. One field, one decision, one tap.',
+  solution:[['Smart input','A single field that accepts Email or CPF.'],
+            ['Bottom-sheet card','Interactive overlay card with rounded corners focused on sign-in conversion.'],
+            ['Clear CTA','High-contrast primary “Continue” button with password recovery support.']],
+  role:['Mobile UI/UX Design & Prototyping','Information Architecture','B2B usability optimization'],
+  palette:[['#ffffff','surface'],['#f2f2f7','background'],['#111111','text'],['#E06659','primary CTA']],
+  typo:'Clean, legible interface type; the high-contrast primary button anchors every screen.'},
+ {id:'projeto-fortificar',n:'03',title:'Projeto Fortificar',client:'FORTES',
+  sub:'Social engagement platform',
+  type:'web',
+  link:'https://www.figma.com/proto/TjWnZKQFSm2EChDcO6PsgG/MoodBoard?node-id=24-63&t=bm7gC24INQNPzNHS-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=24%3A63',
+  overview:'Web initiative developed for FORTES to support and fund social projects, connecting communities and partners with social impact opportunities.',
+  problem:'Create a clear, accessible interface that simplifies project discovery, quick access to official grant documents, and new project submission flows.',
+  note:'Two audiences, two intents: people who want to apply and people who want the rules. Both get a front-door button.',
+  solution:[['Purposeful navigation','Hero CTAs for “Application” and “Public Notice”.'],
+            ['Readable over media','High text contrast over background media using dark overlays.'],
+            ['Modular layout','Welcome banner clearly separated from the project sections.']],
+  role:['Wireframing','High-Fidelity Prototyping','UI Design','Information Hierarchy'],
+  palette:[['#0f172a','overlay'],['#ffffff','text'],['#94a3b8','secondary'],['#2563eb','CTA']],
+  typo:'Large, high-contrast headings over dark-overlay media keep the hero accessible.'},
+ {id:'rotinik',n:'04',title:'Rotinik',client:'Habits & productivity',
+  sub:'Social network for productivity & habits',
+  type:'mobile',
+  link:'https://www.figma.com/proto/6J3ztEniALkxQmoFRlj7yO/ROTINIK?node-id=1-282&t=uU3LXMCu5otP7mcV-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
+  overview:'Mobile social network connecting people through daily routine management, goal setting and productivity tracking.',
+  problem:'Design an immersive, fast onboarding flow with a modern dark theme and vibrant neon accents that minimizes friction and speeds up authentication.',
+  note:'Energy in the visuals, calm in the flow: the brand can be loud as long as the form stays quiet.',
+  solution:[['Energetic identity','Purple tones, pink accents and dynamic gradients over a dark background.'],
+            ['Social login','Multi-channel sign-in with Apple, Google and Facebook.'],
+            ['Smart forms','Structured fields with input masking and real-time validation.']],
+  role:['Mobile UI Design','Information Architecture mapping','Design System components & interactive dark-mode buttons'],
+  palette:[['#0d0b1a','base'],['#7c3aed','purple'],['#ec4899','pink accent'],['#a78bfa','gradient end']],
+  typo:'Bold, energetic type over dark surfaces; gradient used as a signal, not as decoration.'},
+ {id:'fintrack',n:'05',title:'FinTrack',client:'Personal finance',
+  sub:'Simplified mobile personal finance app',
+  type:'mobile',
+  link:'https://www.figma.com/proto/YvUlltI6JXVd1oE7Wu6ug2/Mentoria-UX?node-id=8-6&starting-point-node-id=8%3A6',
+  overview:'Mobile application developed to simplify personal financial management through a friendly, accessible visual approach.',
+  problem:'Make personal finance less intimidating and more welcoming with an intuitive mobile interface that has personality through mascot illustrations and a clean color scheme.',
+  note:'Money is stressful; the interface shouldn’t be. A mascot turns a form into a conversation.',
+  solution:[['Friendly mascot','Illustrated mascot paired with legible, accessible typography.'],
+            ['Card overlay','Clean, centered card layout on a light background with helper input icons.'],
+            ['Green = health','Green primary accent that associates the brand with financial wellbeing.']],
+  role:['Mobile UI Design','Mascot Integration','Information Architecture for authentication','Style Guide definition'],
+  palette:[['#f6faf7','background'],['#ffffff','card'],['#16a34a','primary green'],['#14532d','text']],
+  typo:'Legible, friendly type on a light background with helper icons inside inputs.'}
+];
+
+/* ---------- ISOMETRIC EXPLODED LAPTOP ---------- */
+function buildLaptop(){
+  const s=1.3, cx=270, cy=372, W=170, D=120;
+  const P=(x,y,z)=>[(cx+(x-y)*0.866*s).toFixed(1),(cy+(x+y)*0.5*s-z*s).toFixed(1)].join(',');
+  const poly=(pts,fill,extra='')=>`<polygon points="${pts.map(p=>P(...p)).join(' ')}" fill="${fill}" stroke="#2b2a9c" stroke-width="1.4" stroke-linejoin="round" ${extra}/>`;
+  const box=(x,y,z,w,d,h,top='#fff',l='#dfe6fb',r='#c5cff5')=>
+    poly([[x+w,y,z],[x+w,y+d,z],[x+w,y+d,z+h],[x+w,y,z+h]],r)+
+    poly([[x,y+d,z],[x+w,y+d,z],[x+w,y+d,z+h],[x,y+d,z+h]],l)+
+    poly([[x,y,z+h],[x+w,y,z+h],[x+w,y+d,z+h],[x,y+d,z+h]],top);
+  const line=(a,b,dash='4 4',w=1)=>`<polyline points="${P(...a)} ${P(...b)}" fill="none" stroke="#2b2a9c" stroke-width="${w}" stroke-dasharray="${dash}" opacity=".8"/>`;
+  let g='';
+  // screen (behind, floating)
+  g+=box(0,0,138,W,6,112,'#fff','#c5cff5','#2b2a9c');
+  g+=poly([[8,6.5,146],[W-8,6.5,146],[W-8,6.5,240],[8,6.5,240]],'url(#hatch)');
+  g+=poly([[8,6.5,146],[W-8,6.5,146],[W-8,6.5,240],[8,6.5,240]],'none','stroke-dasharray="3 3"');
+  // wireframe UI inside screen
+  g+=poly([[18,6.6,222],[70,6.6,222],[70,6.6,232],[18,6.6,232]],'#2b2a9c');
+  g+=poly([[18,6.6,160],[W-18,6.6,160],[W-18,6.6,212],[18,6.6,212]],'#fff');
+  g+=poly([[24,6.6,166],[70,6.6,166],[70,6.6,206],[24,6.6,206]],'#dfe6fb');
+  g+=poly([[78,6.6,196],[W-24,6.6,196],[W-24,6.6,206],[78,6.6,206]],'#2b2a9c');
+  g+=poly([[78,6.6,180],[W-40,6.6,180],[W-40,6.6,188],[78,6.6,188]],'#c5cff5');
+  g+=poly([[78,6.6,166],[W-60,6.6,166],[W-60,6.6,174],[78,6.6,174]],'#c5cff5');
+  // guide lines
+  [[0,D],[W,D],[W,0],[0,0]].forEach(c=>{g+=line([c[0],c[1],0],[c[0],c[1],135])});
+  // layer 1: bottom case
+  g+=box(0,0,0,W,D,8,'#fff','#c5cff5','#a9b6ee');
+  for(let i=1;i<6;i++){g+=line([14+i*24,10,8],[14+i*24,D-10,8],'2 3',.8)}
+  // layer 2: board + chips + battery
+  g+=box(0,0,52,W,D,5,'#f4f7ff','#dfe6fb','#c5cff5');
+  g+=box(14,14,57,54,50,9,'url(#hatch)','#c5cff5','#2b2a9c');      // CPU / SoC
+  g+=box(26,26,66,30,26,4,'#2b2a9c','#1b1a66','#1b1a66');
+  g+=box(84,12,57,30,22,5,'#fff','#dfe6fb','#c5cff5');             // RAM
+  g+=box(120,12,57,30,22,5,'#fff','#dfe6fb','#c5cff5');
+  g+=box(84,76,57,70,30,6,'url(#hatch)','#c5cff5','#2b2a9c');      // battery
+  g+=line([68,40,57],[84,23,57],'0',1.2)+line([114,23,57],[120,23,57],'0',1.2)+line([48,64,57],[84,90,57],'0',1.2);
+  // layer 3: keyboard plate
+  g+=box(0,0,100,W,D,5,'#fff','#dfe6fb','#c5cff5');
+  for(let r=0;r<5;r++)for(let c=0;c<11;c++){
+    const kx=10+c*14, ky=10+r*13;
+    g+=`<polygon points="${[[kx,ky,105],[kx+11,ky,105],[kx+11,ky+10,105],[kx,ky+10,105]].map(p=>P(...p)).join(' ')}" fill="#fff" stroke="#2b2a9c" stroke-width=".9"/>`;
+  }
+  g+=poly([[48,D-28,105],[W-48,D-28,105],[W-48,D-10,105],[48,D-10,105]],'#fff'); // trackpad
+  // annotations
+  const note=(x,y,z,tx,ty,t)=>`<polyline points="${P(x,y,z)} ${tx},${ty}" fill="none" stroke="#2b2a9c" stroke-width="1"/><circle cx="${P(x,y,z).split(',')[0]}" cy="${P(x,y,z).split(',')[1]}" r="3" fill="#2b2a9c"/><text x="${tx+4}" y="${ty+4}" font-family="JetBrains Mono,monospace" font-size="12" fill="#2b2a9c">${t}</text>`;
+  g+=note(W,40,57,470,330,'SoC / CPU');
+  g+=note(W,100,60,470,410,'battery');
+  g+=note(W,60,103,470,250,'input layer');
+  g+=note(W,3,200,470,120,'interface (UI)');
+  g+=note(W,100,8,470,500,'chassis');
+  // stars
+  const star=(x,y,r,n,fill,sw=1.4,rot=0)=>{
+    const pts=[];for(let i=0;i<n*2;i++){const rr=i%2?r*.38:r,a=Math.PI*i/n+rot-Math.PI/2;pts.push((x+rr*Math.cos(a)).toFixed(1)+','+(y+rr*Math.sin(a)).toFixed(1))}
+    return `<polygon points="${pts.join(' ')}" fill="${fill}" stroke="#2b2a9c" stroke-width="${sw}" stroke-linejoin="round"/>`};
+  g+=star(70,80,30,4,'url(#hatch2)')+star(130,150,12,4,'none')+star(40,260,16,5,'none',1.4,.3)+star(60,520,26,5,'url(#hatch2)',1.4,.2)
+    +star(190,570,10,4,'none')+star(500,60,20,4,'none',1.4,.4)+star(520,570,14,5,'url(#hatch2)',1.4,.1);
+  return `<svg class="laptop" viewBox="0 0 600 620" role="img" aria-label="Isometric exploded view of an open laptop showing screen, keyboard, board and chassis layers">
+    <defs>
+      <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#2b2a9c" stroke-width="1" opacity=".55"/></pattern>
+      <pattern id="hatch2" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><line x1="0" y1="0" x2="0" y2="4" stroke="#2b2a9c" stroke-width="1"/><line x1="0" y1="0" x2="4" y2="0" stroke="#2b2a9c" stroke-width=".6"/></pattern>
+    </defs>${g}</svg>`;
+}
+
+/* ---------- RENDER ---------- */
+const $app=document.getElementById('app');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const embedUrl=u=>u.replace('https://www.figma.com/proto/','https://embed.figma.com/proto/')+(u.includes('?')?'&':'?')+'embed-host=share';
+
+function renderNav(active){
+  document.getElementById('navlinks').innerHTML=
+    `<li><a href="#/" class="${active==='home'?'on':''}">Home</a></li>`+
+    PROJECTS.map(p=>`<li><a href="#/${p.id}" class="${active===p.id?'on':''}">${p.n} ${esc(p.title)}</a></li>`).join('');
+}
+
+function renderHome(){
+  renderNav('home');
+  $app.innerHTML=`
+  <section class="hero">
+    <div>${buildLaptop()}</div>
+    <div class="stage">
+      <div class="blob">
+        <div class="kicker">UX/UI</div>
+        <h1>Portfolio</h1>
+        <div class="name">Lara Miranda</div>
+        <a class="cta" href="#/" onclick="event.preventDefault();document.getElementById('work').scrollIntoView({behavior:'smooth'})">View work ↓</a>
+      </div>
+    </div>
+    <div class="fig-cap">FIG. 1 — SYSTEMS BEHIND THE INTERFACE</div>
+    <div class="scroll-hint">05 case studies</div>
+  </section>
+  <section class="index" id="work">
+    <span class="tag">[selected work]</span>
+    <h2>Five interfaces, one obsession:<br>the first screen people see.</h2>
+    <div class="cards">
+      ${PROJECTS.map(p=>`
+        <a class="card" href="#/${p.id}">
+          <span class="n">${p.n} / 05</span>
+          <h3>${esc(p.title)}</h3>
+          <p>${esc(p.sub)}</p>
+          <div class="sw">${p.palette.map(c=>`<i style="background:${c[0]}"></i>`).join('')}</div>
+        </a>`).join('')}
+    </div>
+  </section>`;
+  window.scrollTo(0,0);
+}
+
+function renderProject(id){
+  const i=PROJECTS.findIndex(p=>p.id===id); if(i<0) return renderHome();
+  const p=PROJECTS[i], prev=PROJECTS[(i+PROJECTS.length-1)%PROJECTS.length], next=PROJECTS[(i+1)%PROJECTS.length];
+  renderNav(p.id);
+  const w=p.type==='web'?'1440px':'420px', ratio=p.type==='web'?'16 / 9':'7 / 13';
+  $app.innerHTML=`
+  <section class="sec dark indigo cs-head"><div class="wrap">
+    <a class="crumb" href="#/">← all projects</a><br><br>
+    <span class="tag">${p.n} / 05 · ${esc(p.client)}</span>
+    <h1>${esc(p.title)}</h1>
+    <p class="sub">${esc(p.sub)}</p>
+    <div class="meta">
+      <div><b>[role]</b><span>${p.role.map(esc).join('<br>')}</span></div>
+      <div><b>[platform]</b><span>${p.type==='web'?'Web':'Mobile app'}</span></div>
+      <div><b>[deliverable]</b><span>Interactive Figma prototype</span></div>
+    </div>
+  </div></section>
+
+  <section class="sec light grid"><div class="wrap two">
+    <div>
+      <span class="tag">[problem]</span>
+      <h2 class="t">The challenge</h2>
+      <p class="lede">${esc(p.overview)}</p>
+      <p class="lede"><strong>${esc(p.problem)}</strong></p>
+    </div>
+    <aside class="float"><div class="lbl">UX note</div><p>${esc(p.note)}</p></aside>
+  </div></section>
+
+  <section class="sec dark"><div class="wrap">
+    <span class="tag">[solution]</span>
+    <h2 class="t">UI/UX solution</h2>
+    <div class="sol">
+      ${p.solution.map((s,k)=>`<article><div class="k">0${k+1}</div><h3 style="margin:0 0 8px;font-family:var(--serif);font-size:22px">${esc(s[0])}</h3><p>${esc(s[1])}</p></article>`).join('')}
+    </div>
+  </div></section>
+
+  <section class="sec light"><div class="wrap">
+    <div>
+      <span class="tag">[typography &amp; color]</span>
+      <h2 class="t">Visual language</h2>
+      <div class="pal">${p.palette.map(c=>`<figure><div class="chip" style="background:${c[0]}"></div><figcaption>${c[0]}<br>${esc(c[1])}</figcaption></figure>`).join('')}</div>
+      <p class="lede">${esc(p.typo)}</p>
+    </div>
+  </div></section>
+
+  <section class="sec dark indigo proto-section"><div class="wrap">
+    <span class="tag">[hi-fi prototype]</span>
+    <h2 class="t">Try it yourself</h2>
+    <div class="proto-wrap">
+      <div class="frame" style="--w:${w};--ratio:${ratio}">
+        <iframe src="${embedUrl(p.link)}" title="${esc(p.title)} Figma prototype" loading="lazy" allowfullscreen></iframe>
+      </div>
+      <a class="btn" href="${p.link}" target="_blank" rel="noopener">Open in Figma ↗</a>
+    </div>
+  </div></section>
+
+  <section class="sec light grid"><div class="wrap pager">
+    <a href="#/${prev.id}"><small>← previous</small>${esc(prev.title)}</a>
+    <a href="#/${next.id}" style="text-align:right"><small>next →</small>${esc(next.title)}</a>
+  </div></section>`;
+  window.scrollTo(0,0);
+}
+
+function route(){
+  const h=(location.hash||'#/').replace('#/','');
+  if(!h) renderHome(); else renderProject(h);
+}
+window.addEventListener('hashchange',route);
+route();
+</script>
+</body>
+</html>
